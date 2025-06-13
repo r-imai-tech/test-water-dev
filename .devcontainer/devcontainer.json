@@ -4,7 +4,12 @@
   "runServices": ["db", "backend", "frontend"],
   "workspaceFolder": "/workspace",        // モノレポのルートを開く
   "forwardPorts": [8080, 5173],
-  "postCreateCommand": "cd ./backend && ./gradlew build",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"                     // Node.js を追加インストール
+    }
+  },
+  "postCreateCommand": "cd frontend && npm install && cd ../backend && ./gradlew build",
   "customizations": {
     "vscode": {
       "extensions": [
